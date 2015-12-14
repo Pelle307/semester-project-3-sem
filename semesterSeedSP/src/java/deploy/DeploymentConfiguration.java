@@ -21,7 +21,7 @@ import security.PasswordHash;
 @WebListener
 public class DeploymentConfiguration implements ServletContextListener {
 
-  public static String PU_NAME = "PU-Local";
+  public static String PU_NAME = "PU";
 
   @Override
   public void contextInitialized(ServletContextEvent sce) {
@@ -30,6 +30,7 @@ public class DeploymentConfiguration implements ServletContextListener {
     if (env.keySet().contains("OPENSHIFT_MYSQL_DB_HOST")) {
       PU_NAME = "PU_OPENSHIFT";
     }
+      System.out.println(PU_NAME);
     try {
       ServletContext context = sce.getServletContext();
       EntityManagerFactory emf = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
