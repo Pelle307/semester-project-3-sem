@@ -65,8 +65,10 @@ public class FlightFacade implements Callable<String> {
                     System.out.println(response + "hej smukke i midten efter if");
                     while (responseReader.hasNext()) {
                         res += responseReader.nextLine() + System.getProperty("line.separator");
+                        
                     }
-                } //If you wan't to do something with the error response
+                    response+=res;
+                }  //If you wan't to do something with the error response
                 else if (HttpResult >= 400) {
                     System.out.println(response + "hej smukke i din bare numse");
           // Scanner errorResponseReader = new Scanner(new InputStreamReader(con.getErrorStream(), "utf-8"));
