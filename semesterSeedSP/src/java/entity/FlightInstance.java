@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
@@ -20,10 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- *
- * @author noncowi
- */
 @Entity
 @Table(name="FlightInstance")
 @NamedQueries({
@@ -31,8 +22,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "FlightInstance.areSeatsAvailable", query="SELECT f.availableSeats FROM FlightInstance f"),
     @NamedQuery(name = "FlightInstance.findFlightInstanceByID", query="SELECT f FROM FlightInstance f WHERE f.id = :id"),
     @NamedQuery(name = "FlightInstance.findPriceOfFlight", query="SELECT f.price FROM FlightInstance f WHERE f.id = :id"),
-    @NamedQuery(name = "FlightInstance.findFlightInstanceByOriginDestination", query="SELECT f FROM FlightInstance f WHERE f.destination = :destination AND f.origin = :origin AND f.departureDate = :departuredate"),
-    @NamedQuery(name = "FlightInstance.findFlightInstanceByOrigin", query="SELECT f FROM FlightInstance f WHERE f.origin = :origin AND f.departureDate = :departuredate")
+    @NamedQuery(name = "FlightInstance.findFlightInstanceByOriginDestination", query="SELECT f FROM FlightInstance f WHERE f.destination = :destination AND f.origin = :origin AND f.departureDate = :departuredate AND f.availableSeats > :availableseats"),
+    @NamedQuery(name = "FlightInstance.findFlightInstanceByOrigin", query="SELECT f FROM FlightInstance f WHERE f.origin = :origin AND f.departureDate = :departuredate AND f.availableSeats > :availableseats")
 })
 public class FlightInstance implements Serializable {
     @Id

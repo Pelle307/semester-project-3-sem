@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
@@ -22,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="Passenger")
 @NamedQueries({
     @NamedQuery(name = "Passenger.findAll", query="SELECT p FROM Passenger p"),
+    @NamedQuery(name = "Passenger.findByReservation", query="SELECT p FROM Passenger p WHERE p.storedReservations = :storedReservations"),
     @NamedQuery(name = "Passenger.findPassengerByName", query="SELECT p FROM Passenger p WHERE p.firstName = :firstName AND p.lastName = :lastName")
 })
 public class Passenger implements Serializable {
@@ -36,6 +32,7 @@ public class Passenger implements Serializable {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "reservation", referencedColumnName = "id")
     private Reservation reservation;
+
     
     public Passenger() {
     }
@@ -55,6 +52,7 @@ public class Passenger implements Serializable {
         this.lastName = lastName;
         this.reservation = reservation;
     }
+    
 
     public String getFirstName() {
         return firstName;

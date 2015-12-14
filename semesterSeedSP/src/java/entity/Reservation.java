@@ -20,10 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- *
- * @author noncowi
- */
 @Entity
 @Table(name="Reservation")
 @NamedQueries({
