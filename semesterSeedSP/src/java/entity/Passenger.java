@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Table(name="Passenger")
 @NamedQueries({
     @NamedQuery(name = "Passenger.findAll", query="SELECT p FROM Passenger p"),
-    @NamedQuery(name = "Passenger.findByReservation", query="SELECT p FROM Passenger p WHERE p.storedReservations = :storedReservations"),
     @NamedQuery(name = "Passenger.findPassengerByName", query="SELECT p FROM Passenger p WHERE p.firstName = :firstName AND p.lastName = :lastName")
 })
 public class Passenger implements Serializable {
