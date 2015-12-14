@@ -33,7 +33,7 @@ public class Scraper {
     public Scraper() {
         emf = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         em = emf.createEntityManager();
-        Query query = em.createNamedQuery("url.findUrl");
+        Query query = em.createNamedQuery("url.findAll");
         urls = query.getResultList();
     }
     private static final String[] airlines = {
@@ -52,6 +52,8 @@ public class Scraper {
         ExecutorService executor = Executors.newFixedThreadPool(8);
         String response = "[";
             for (String url : urls) {
+                System.out.println(urls);
+                System.out.println(url);
                 Future<String> future = executor.submit(new FlightFacade(url, origin, date, seats));
             list.add(future);
 

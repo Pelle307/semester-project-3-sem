@@ -6,25 +6,31 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jonas
  */
 @Entity
-//@NamedQueries({
-//    @NamedQuery(name = "Url.findUrl", query="SELECT u FROM url u")
-//})
+@Table(name="URL")
+@NamedQueries({
+    @NamedQuery(name = "url.findAll", query="SELECT u.url FROM Url u")
+//    @NamedQuery(name = "url.findURL", query="SELECT u.url FROM URL u WHERE u.url = :url")
+})
 public class Url implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    @Column(name="URL")
     private String url;
 
     public String getId() {
