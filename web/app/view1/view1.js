@@ -17,7 +17,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 this.msgFromService = InfoService.getInfo();
 
                 var self = this;
-                self.flights; //[{"date": "2016", "airline": "Captana", "flightId": "Hej", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "Sut", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "sovs", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}];
+                self.data = {}; //[{"date": "2016", "airline": "Captana", "flightId": "Hej", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "Sut", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "sovs", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}];
                 self.date;
                 self.to;
                 self.from;
@@ -32,8 +32,8 @@ angular.module('myApp.view1', ['ngRoute'])
                         method: 'GET',
                         url: 'api/scraper/airlines/' + self.from + '/' + self.to + '/' + self.date.toISOString().split('T')[0] + 'T00:00:00.000Z' + '/' + self.persons
                     }).then(
-                            function succes(data) {
-                                self.flights = data;
+                            function succes(res) {
+                                self.data = res.data;
                             },
                             function fail(data) {
                             })

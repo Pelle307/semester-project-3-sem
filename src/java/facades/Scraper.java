@@ -54,7 +54,6 @@ public class Scraper {
         List<Future<String>> list = new ArrayList();
         ExecutorService executor = Executors.newFixedThreadPool(8);
         List<String> response = new ArrayList();
-        urls.add("http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             for (String url : urls) {
                 Future<String> future = executor.submit(new FlightFacadeOnlyDest(url, origin, date, seats));
             list.add(future);
@@ -85,7 +84,6 @@ public class Scraper {
         List<Future<String>> list = new ArrayList();
         ExecutorService executor = Executors.newFixedThreadPool(8);
         String response = "[";
-        urls.add("http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             for (String url : urls) {
                 Future<String> future = executor.submit(new FlightFacadeFromTo(url, origin,dest, date, seats));
             list.add(future);
