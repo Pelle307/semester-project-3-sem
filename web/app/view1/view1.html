@@ -1,4 +1,3 @@
-
 <style>h2 {color: darkblue;}</style>
 <div style=" float: left;">
     <label>Date:</label>
@@ -39,27 +38,25 @@
 </div>
 
 <div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Airline</th>
-                <th>FlightId</th>
-                <th>NumberOfSeats</th>
-                <th>TotalPrice</th>
-                <th>TravelTime</th>
-                <th>Origin</th>
+    <br>
+    <br>
+    <uib-accordion>
+        <uib-accordion-group ng-repeat="airline in ctrl.data" heading={{airline.airline}} >
+            <table class="table">
+                <tr>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Email</th>
+                </tr>
+                <tr ng-repeat="flight in airline.flights">
+                    <td>{{flight.flightID}}</td>
+                    <td>{{flight.numberOfSeats}}</td>
+                    <td>{{flight.origin}}</td>
+                    <td>{{flight.totalPrice}}</td>
+                </tr>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="flight in ctrl.data">
-                <td>{{flight.airline}}</td>
-                <td>{{flight.flights[0].flightID}}</td>
-                <td>{{flight.numberOfSeats}}</td>
-                <td>{{flight.totalPrice}}</td>
-                <td>{{flight.traveltime}}</td>
-                <td>{{flight.origin}}</td>
-            </tr>
-        </tbody>
-    </table>
+            </table>
+        </uib-accordion-group>
+    </uib-accordion>
 </div>
