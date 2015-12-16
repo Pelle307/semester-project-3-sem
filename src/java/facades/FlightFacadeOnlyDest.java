@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
  *
  * @author Jonas
  */
-public class FlightFacadeOnlyDest implements Callable<JsonObject> {
+public class FlightFacadeOnlyDest implements Callable<String> {
 
     Scraper scr;
     String url;
@@ -42,8 +42,8 @@ public class FlightFacadeOnlyDest implements Callable<JsonObject> {
     }
 
     @Override
-    public JsonObject call() throws Exception {
-        JsonObject jo;
+    public String call() throws Exception {
+       
         String response = null;
         try {
 //    for (String url : urls) {
@@ -75,9 +75,7 @@ public class FlightFacadeOnlyDest implements Callable<JsonObject> {
 //    }
         } catch (MalformedURLException e) {
         }
-        JsonElement je = new JsonParser().parse(response);
-                jo = je.getAsJsonObject();
-        return jo;
+        return response;
     }
 
 }

@@ -49,18 +49,18 @@ public class Scraper {
         System.out.println(response);
     }
 
-    public List<JsonObject> getOffers(String origin, String date, int seats) throws IOException{
+    public List<String> getOffers(String origin, String date, int seats) throws IOException{
         
-        List<Future<JsonObject>> list = new ArrayList();
+        List<Future<String>> list = new ArrayList();
         ExecutorService executor = Executors.newFixedThreadPool(8);
-        List<JsonObject> response = new ArrayList();
+        List<String> response = new ArrayList();
         urls.add("http://angularairline-plaul.rhcloud.com/api/flightinfo/");
             for (String url : urls) {
-                Future<JsonObject> future = executor.submit(new FlightFacadeOnlyDest(url, origin, date, seats));
+                Future<String> future = executor.submit(new FlightFacadeOnlyDest(url, origin, date, seats));
             list.add(future);
 
             }
-            for (Future<JsonObject> future : list) {
+            for (Future<String> future : list) {
            
             try {
                 if (future.get() != null)
