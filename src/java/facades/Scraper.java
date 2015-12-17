@@ -49,11 +49,10 @@ public class Scraper {
         System.out.println(response);
     }
 
-    public List<String> getOffers(String origin, String date, int seats) throws IOException{
-        
-        List<Future<String>> list = new ArrayList();
+    public String getOffers(String origin, String date, int seats) throws IOException{
+    List<Future<String>> list = new ArrayList();
         ExecutorService executor = Executors.newFixedThreadPool(8);
-        List<String> response = new ArrayList();
+        String response = "[";
             for (String url : urls) {
                 Future<String> future = executor.submit(new FlightFacadeOnlyDest(url, origin, date, seats));
             list.add(future);
@@ -64,7 +63,7 @@ public class Scraper {
             try {
                 if (future.get() != null)
                     
-                    response.add(future.get());
+                    response = response + future.get() +"";
             } catch (ExecutionException ex) {
                 Logger.getLogger(Scraper.class.getName()).log(Level.SEVERE, null, ex);
             }catch (InterruptedException e){
@@ -75,8 +74,10 @@ public class Scraper {
            
             
         executor.shutdown();
+        response = response + "]";
         return response;
     }
+    
 
     
 

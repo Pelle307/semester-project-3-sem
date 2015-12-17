@@ -15,28 +15,52 @@ angular.module('myApp.view1', ['ngRoute'])
         .controller('View1Ctrl', ["InfoFactory", "InfoService", "$http", function (InfoFactory, InfoService, $http) {
                 this.msgFromFactory = InfoFactory.getInfo();
                 this.msgFromService = InfoService.getInfo();
-                
+
                 var self = this;
                 self.data = {}; //[{"date": "2016", "airline": "Captana", "flightId": "Hej", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "Sut", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}, {"date": "2016", "airline": "Captana", "flightId": "sovs", "numberOfSeats": "4", "totalPrice": "1234kr", "traveltime": "4232min", "origin": "LON"}];
+                
                 self.date;
                 self.to;
                 self.from;
-                self.persons;  
-//                var year = self.date.getFullYear();
-//                var month = self.date.getMonth();
-//                var day = self.date.getDate();
-//                self.newDate = new Date(year, month, day, 1);
+                self.persons;
+                
+                
                 self.search = function () {
                     self.data = {};
-                    
-                    $http({
-                        method: 'GET',
-                        url: 'api/scraper/airlines/' + self.from + '/' + self.to + '/' + self.date.toISOString().split('T')[0] + 'T00:00:00.000Z' + '/' + self.persons
-                    }).then(
-                            function succes(res) {
-                                self.data = res.data;
-                            },
-                            function fail(data) {
-                            })
+                    if(self.date!==null||self.to!==null||self.from!==null||self.persons!==null){
+                        $http({
+                            method: 'GET',
+                            url: 'api/scraper/airlines/' + self.from + '/' + self.to + '/' + self.date.toISOString().split('T')[0] + 'T00:00:00.000Z' + '/' + self.persons
+                        }).then(
+                                function succes(res) {
+                                    self.data = res.data;
+                                },
+                                function fail(data) {
+                                })
+                            }else {
+                                self.data.message = "Please fill in all fields."
+                            }
+                };
+                
+                
+                
+                self.fromOnlyDest;
+                self.personsOnlyDest;
+                self.dateOnlyDest;
+                self.searchOnlyDest = function () {
+                    self.data = {};
+                    if (self.dateOnlyDest !== null || self.fromOnlyDest !== null || self.personsOnlyDest !== null) {
+                        $http({
+                            method: 'GET',
+                            url: 'api/scraper/airlines/' + self.fromOnlyDest  + '/' + self.dateOnlyDest.toISOString().split('T')[0] + 'T00:00:00.000Z' + '/' + self.personsOnlyDest
+                        }).then(
+                                function succes(res) {
+                                    self.data = res.data;
+                                },
+                                function fail(data) {
+                                })
+                    } else {
+                        self.data.message="Please fill in all fields."
+                    }
                 };
             }]);

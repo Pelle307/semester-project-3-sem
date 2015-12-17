@@ -1,13 +1,17 @@
 <style>h2 {color: darkblue;}</style>
 <div style=" float: left;">
     <label>Date:</label>
-    <input ng-model="ctrl.date" required="" type="date" min="2016-01-01" max="2016-12-31" class="form-control ng-pristine ng-valid-min ng-valid-max ng-invalid ng-invalid-required ng-touched" style="width: 15em;">
+    <input ng-model="ctrl.date" required="" type="date" min="2016-01-01" 
+           max="2016-12-31" class="form-control ng-pristine ng-valid-min 
+           ng-valid-max ng-invalid ng-invalid-required ng-touched" style="width: 15em;">
 
 </div>
+<label>{{ctrl.date}}</label>
 
 <div style=" float: left;">
     <label>From:</label>
-    <select id="origin" ng-model="ctrl.from" class="form-control ng-pristine ng-valid ng-touched" style="width: 10em;"><option value="? undefined:undefined ?"></option>
+    <select id="origin" ng-model="ctrl.from" class="form-control ng-pristine 
+            ng-valid ng-touched" style="width: 10em;"><option value="? undefined:undefined ?"></option>
         <option value="SXF">Berlin</option>
         <option value="CPH">Copenhagen</option>
         <option value="STN">London</option>
@@ -19,7 +23,8 @@
 
 <div style=" float: left;">
     <label>Destination:</label>
-    <select id="origin" ng-model="ctrl.to" class="form-control ng-pristine ng-valid ng-touched" style="width: 10em;"><option value="? undefined:undefined ?"></option>
+    <select id="origin" ng-model="ctrl.to" class="form-control ng-pristine 
+            ng-valid ng-touched" style="width: 10em;"><option value="? undefined:undefined ?"></option>
         <option value="SXF">Berlin</option>
         <option value="CPH">Copenhagen</option>
         <option value="STN">London</option>
@@ -27,30 +32,64 @@
         <option value="BCN">Barcelona</option>
     </select>
 </div>
-<label>{{ctrl.date}}</label>
 <div style=" float: left;">
     <label>Seats:</label>
-    <input type="text" id="seats" ng-model="ctrl.persons" style="width: 4em;" class="form-control ng-pristine ng-valid ng-touched">
+    <input type="text" id="seats" ng-model="ctrl.persons" style="width: 4em;" 
+           class="form-control ng-pristine ng-valid ng-touched">
 </div>
 <div style=" float: left;">
     <br>
     <button type="button" class="btn btn-primary" ng-click="ctrl.search()" style="margin-left: 1em;">SEARCH</button>
 </div>
+<br>
+<br>
+<br>
+<br>
+<div style=" float: left;">
+    <label>Date:</label>
+    <input ng-model="ctrl.dateOnlyDest" required="" type="date" min="2016-01-01" max="2016-12-31" class="form-control ng-pristine ng-valid-min ng-valid-max ng-invalid ng-invalid-required ng-touched" style="width: 15em;">
+
+</div>
+
+<div style=" float: left;">
+    <label>From:</label>
+    <select id="originOnlyDest" ng-model="ctrl.fromOnlyDest" class="form-control ng-pristine ng-valid ng-touched" style="width: 10em;"><option value="? undefined:undefined ?"></option>
+        <option value="SXF">Berlin</option>
+        <option value="CPH">Copenhagen</option>
+        <option value="STN">London</option>
+        <option value="CDG">Paris</option>
+        <option value="BCN">Barcelona</option>
+    </select>
+</div>
+
+
+
+
+<div style=" float: left;">
+    <label>Seats:</label>
+    <input type="text" id="seatsOnlyDest" ng-model="ctrl.personsOnlyDest" style="width: 4em;" class="form-control ng-pristine ng-valid ng-touched">
+</div>
+<div style=" float: left;">
+    <br>
+    <button type="button" class="btn btn-primary" ng-click="ctrl.searchOnlyDest()" style="margin-left: 1em;">SEARCH</button>
+</div>
 
 <div>
+    <br>
+    <br>
     <br>
     <br>
     <uib-accordion>
         <uib-accordion-group ng-repeat="airline in ctrl.data track by $index" heading={{airline.airline}} >
             <table class="table">
                 <tr>
-                <th>FlightId</th>
-                <th>Number of seats</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Date</th>
-                <th>Travel time</th>
-                <th>Price</th>
+                    <th>FlightId</th>
+                    <th>Number of seats</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Date</th>
+                    <th>Travel time</th>
+                    <th>Price</th>
                 </tr>
                 <tr ng-repeat="flight in airline.flights">
                     <td>{{flight.flightID}}</td>
@@ -64,4 +103,5 @@
             </table>
         </uib-accordion-group>
     </uib-accordion>
+    <label>{{ctrl.data.message}}</label>
 </div>
