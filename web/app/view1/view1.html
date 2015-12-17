@@ -41,7 +41,7 @@
     <br>
     <br>
     <uib-accordion>
-        <uib-accordion-group ng-repeat="airline in ctrl.data" heading={{airline.airline}} >
+        <uib-accordion-group ng-repeat="airline in ctrl.data track by $index" heading={{airline.airline}} >
             <table class="table">
                 <tr>
                 <th>FlightId</th>

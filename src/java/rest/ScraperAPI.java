@@ -28,7 +28,6 @@ public class ScraperAPI {
 @Produces("application/json")
 @Path("airlines/{from}/{to}/{date}/{persons}")
     public String getAirlines(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date,@PathParam("persons") int persons){
-        System.out.println("xxx");
         Scraper sc = new Scraper();
         String airlines = "";
         try{
