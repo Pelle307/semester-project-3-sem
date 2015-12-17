@@ -44,15 +44,21 @@
         <uib-accordion-group ng-repeat="airline in ctrl.data" heading={{airline.airline}} >
             <table class="table">
                 <tr>
-                <th>Address</th>
-                <th>City</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>FlightId</th>
+                <th>Number of seats</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Travel time</th>
+                <th>Price</th>
                 </tr>
                 <tr ng-repeat="flight in airline.flights">
                     <td>{{flight.flightID}}</td>
                     <td>{{flight.numberOfSeats}}</td>
                     <td>{{flight.origin}}</td>
+                    <td>{{flight.destination}}</td>
+                    <td>{{flight.date.split('T')[0]}}</td>
+                    <td>{{flight.traveltime}}</td>
                     <td>{{flight.totalPrice}}</td>
                 </tr>
 
