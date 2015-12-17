@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import deploy.DeploymentConfiguration;
+import entity.Url;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -37,6 +38,8 @@ public class Scraper {
         em = emf.createEntityManager();
         Query query = em.createNamedQuery("url.findAll");
         urls = query.getResultList();
+        
+                
     }
     private static final String[] airlines = {
         "http://angularairline-plaul.rhcloud.com/api/flightinfo/",

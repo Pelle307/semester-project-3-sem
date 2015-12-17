@@ -62,15 +62,15 @@ public class DeploymentConfiguration implements ServletContextListener {
                 em.persist(admin);
                 em.persist(both);
                 em.persist(new Url("http://angularairline-plaul.rhcloud.com/"));
-//                em.persist(new Url("http://thebighornairline-ebski.rhcloud.com/GiantHornAirlineServer/"));
-//                em.persist(new Url("http://jstairline-hardboilr.rhcloud.com/"));
-//                em.persist(new Url("http://airline-nvbcphbusinesss.rhcloud.com/Travelr"));
-//                em.persist(new Url("http://justfly.azurewebsites.net/MomondoProjekt/"));
-//                em.persist(new Url("http://airline-nharbo.rhcloud.com/airline/"));
-//                em.persist(new Url("http://bizz-favl.rhcloud.com/bizzairline/"));
-//                em.persist(new Url("http://wildfly-x.cloudapp.net/airline/"));
-//                em.persist(new Url("http://frenchyairlines-zerosource.rhcloud.com/"));
-//                em.persist(new Url("http://infamouslines-baniproductions.rhcloud.com"));
+                em.persist(new Url("http://thebighornairline-ebski.rhcloud.com/GiantHornAirlineServer/"));
+                em.persist(new Url("http://jstairline-hardboilr.rhcloud.com/"));
+                em.persist(new Url("http://airline-nvbcphbusinesss.rhcloud.com/Travelr"));
+                em.persist(new Url("http://justfly.azurewebsites.net/MomondoProjekt/"));
+                em.persist(new Url("http://airline-nharbo.rhcloud.com/airline/"));
+                em.persist(new Url("http://bizz-favl.rhcloud.com/bizzairline/"));
+                em.persist(new Url("http://wildfly-x.cloudapp.net/airline/"));
+                em.persist(new Url("http://frenchyairlines-zerosource.rhcloud.com/"));
+                em.persist(new Url("http://infamouslines-baniproductions.rhcloud.com"));
                 em.getTransaction().commit();
 
             } finally {

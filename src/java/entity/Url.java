@@ -28,12 +28,14 @@ import javax.persistence.Table;
 public class Url implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    
     @Column(name="URL")
     private String url;
 
     public Url(String url) {
         this.url = url;
+    }
+
+    public Url() {
     }
 
     public String getId() {
