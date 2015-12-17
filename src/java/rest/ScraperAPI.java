@@ -36,7 +36,7 @@ public class ScraperAPI {
             return gson.toJson("hej");
         }
         if(airlines.equals("") || airlines.equals("[]"))
-        {return gson.toJson("Flight not found");
+        {return "\"Message\":\"No available flights were found. Try another date or seat number\"";
         }
         System.out.println("yyy: "+airlines);
         return airlines;
